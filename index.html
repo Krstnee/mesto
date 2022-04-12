@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="pages/index.css">
+  <title>Mesto</title>
+</head>
+<body class="root">
+    <header class="header">
+        <img class="header__logo" src="./images/Vector.svg"/>
+    </header>
+    <main class="content">
+        <section class="profile">
+            <img class="profile__avatar" src='./images/profilephoto.jpg'/>
+            <div class="profile__info">
+                <h1 class="profile__name" id="name">Жак-Ив Кусто</h1>
+                <p class="profile__job" id="job">Исследователь океана</p>
+                <button class="profile__edit-button" type="button">Редактировать</button>
+            </div>
+            <button class="profile__add-button" type="button">Добавить фото</button>
+        </section>
+        <section class="places">
+            <ul class="photo-grid">
+                <li class="photo-grid__item">
+                    <img  class="photo-grid__pic" src="./images/photogrid1.png">
+                    <div class="photo-grid__description">
+                        <h2 class="photo-grid__title">Карачаевск</h2>
+                        <button type="button" class="photo-grid__like">Нравится</button>
+                    </div>
+                </li>
+                <li class="photo-grid__item">
+                    <img class="photo-grid__pic" src="./images/photogrid2.png">
+                    <div class="photo-grid__description">
+                        <h2 class="photo-grid__title">Гора Эльбрус</h2>
+                        <button type="button" class="photo-grid__like">Нравится</button>
+                    </div>
+                </li>
+                <li class="photo-grid__item">
+                    <img class="photo-grid__pic" src="./images/photogrid3.png">
+                    <div class="photo-grid__description" >
+                        <h2 class="photo-grid__title">Домбай</h2>
+                        <button type="button" class="photo-grid__like">Нравится</button>
+                    </div>
+                </li>
+                <li class="photo-grid__item">
+                    <img class="photo-grid__pic" src="./images/photogrid2.png">
+                    <div class="photo-grid__description">
+                        <h2 class="photo-grid__title">Гора Эльбрус</h2>
+                        <button type="button" class="photo-grid__like">Нравится</button>
+                    </div>
+                </li>
+                <li class="photo-grid__item">
+                    <img  class="photo-grid__pic" src="./images/photogrid3.png">
+                    <div class="photo-grid__description">
+                        <h2 class="photo-grid__title">Домбай</h2>
+                        <button type="button" class="photo-grid__like">Нравится</button>
+                    </div>
+                </li>
+                <li class="photo-grid__item">
+                    <img  class="photo-grid__pic" src="./images/photogrid1.png">
+                    <div class="photo-grid__description">
+                        <h2 class="photo-grid__title">Карачаево-Черкессия</h2>
+                        <button type="button" class="photo-grid__like">Нравится</button>
+                    </div>
+                </li>
+            
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__text">&copy; 2022 Mesto Russia</p>
+    </footer>
+    <div class="popup popup_profile">
+        <div class="popup__container">
+            <button class="popup__close">Закрыть</button>
+            <form action="/" method="POST" class="form form_type_profile" name="edit-profile">
+                <h2 class="form__title">Редактировать профиль</h2>
+                <div class="form__fields">
+                    <input type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" class="form__input form__input_type_name" name="profile-name" id="profile-name" required>
+                </div>
+                <div class="form__fields">
+                    <input type="text" value="Исследователь океана" placeholder="Кто вы?" class="form__input form__input_type_job" name="profile-job" id="profile-job" required>
+                </div>
+                <button type="submit" class="form__submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
