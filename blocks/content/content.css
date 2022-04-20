@@ -1,10 +1,10 @@
 .content {
     max-width: 880px;
     margin: 0 auto;
-}
-
-@media screen and (max-width:940px) {
+  }
+  
+  @media screen and (max-width: 910px) {
     .content {
-        margin: 0 19px;
+      padding: 0 19px;
     }
-}
+  }
