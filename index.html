@@ -1,92 +1,86 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pages/index.css">
-  <title>Mesto</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="pages/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESTO</title>
 </head>
-<body class="root">
+
+<body class="body">
     <header class="header">
-        <img class="header__logo" src="./images/Vector.svg" alt='логотип'/>
+        <div class="header__logo"></div>
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="./images/profilephoto.jpg" alt="Фото профиля"/>
+            <img class="profile__avatar" src="images/avatar.jpg" alt="Фото профиля">
             <div class="profile__info">
-                <h1 class="profile__name" id="name">Жак-Ив Кусто</h1>
-                <p class="profile__job" id="job">Исследователь океана</p>
-                <button class="profile__edit-button" type="button">Редактировать</button>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <p class="profile__job">Исследователь океана</p>
+                <button type="button" class="profile__edit" aria-label="button-edit"></button>
             </div>
-            <button class="profile__add-button" type="button">Добавить фото</button>
+            <button type="button" class="profile__add" aria-label="button-add"></button>
         </section>
         <section class="places">
-            <ul class="photo-grid">
-                <li class="photo-grid__item">
-                    <img alt="Карачаевск" class="photo-grid__pic" src="./images/photogrid1.png">
-                    <div class="photo-grid__description">
-                        <h2 class="photo-grid__title">Карачаевск</h2>
-                        <button type="button" class="photo-grid__like">Нравится</button>
-                    </div>
-                </li>
-                <li class="photo-grid__item">
-                    <img alt="Гора" class="photo-grid__pic" src="./images/photogrid2.png">
-                    <div class="photo-grid__description">
-                        <h2 class="photo-grid__title">Гора Эльбрус</h2>
-                        <button type="button" class="photo-grid__like">Нравится</button>
-                    </div>
-                </li>
-                <li class="photo-grid__item">
-                    <img alt="Домбай" class="photo-grid__pic" src="./images/photogrid3.png">
-                    <div class="photo-grid__description" >
-                        <h2 class="photo-grid__title">Домбай</h2>
-                        <button type="button" class="photo-grid__like">Нравится</button>
-                    </div>
-                </li>
-                <li class="photo-grid__item">
-                    <img alt="Гора" class="photo-grid__pic" src="./images/photogrid2.png">
-                    <div class="photo-grid__description">
-                        <h2 class="photo-grid__title">Гора Эльбрус</h2>
-                        <button type="button" class="photo-grid__like">Нравится</button>
-                    </div>
-                </li>
-                <li class="photo-grid__item">
-                    <img alt="Домбай" class="photo-grid__pic" src="./images/photogrid3.png">
-                    <div class="photo-grid__description">
-                        <h2 class="photo-grid__title">Домбай</h2>
-                        <button type="button" class="photo-grid__like">Нравится</button>
-                    </div>
-                </li>
-                <li class="photo-grid__item">
-                    <img alt="Карачаево-Черкессия" class="photo-grid__pic" src="./images/photogrid1.png">
-                    <div class="photo-grid__description">
-                        <h2 class="photo-grid__title">Карачаево-Черкессия</h2>
-                        <button type="button" class="photo-grid__like">Нравится</button>
-                    </div>
-                </li>
-            
-            </ul>
+            <ul class="photo-grid"></ul>
+
         </section>
     </main>
-    <footer class="footer">
-        <p class="footer__text">&copy; 2022 Mesto Russia</p>
-    </footer>
-    <div class="popup popup_profile">
-        <div class="popup__container">
-            <button class="popup__close" type="button">Закрыть</button>
-            <form action="/" method="POST" class="form form_type_profile" name="edit-profile">
-                <h2 class="form__title">Редактировать профиль</h2>
-                <div class="form__fields">
-                    <input type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" class="form__input form__input_type_name" name="profile-name" id="profile-name" required>
-                </div>
-                <div class="form__fields">
-                    <input type="text" value="Исследователь океана" placeholder="Кто вы?" class="form__input form__input_type_job" name="profile-job" id="profile-job" required>
-                </div>
-                <button type="submit" class="form__submit">Сохранить</button>
-            </form>
+
+    <div class="popup" id="popup-image">
+        <div class="popup__figure">
+            <img class="popup__picture" src="#" alt="">
+            <h3 class="popup__caption"></h3>
+            <button type="button" class="popup__image-close" aria-label="Close"></button>
         </div>
     </div>
 
-    <script src="./scripts/script.js"></script>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
+
+    <div id="popup__profile" class="popup">
+        <div class="popup__container">
+            <h2 class="popup__title" id="profile__title">Редактирование профиля</h2>
+            <form name="profile-edit" id="profile-form" class="popup__form" action="#">
+                <input name="profile-name" type="text" class="popup__input" id="profile__name" value=""
+                    placeholder="Введите имя" required>
+                <input name="profile-status" type="text" class="popup__input" id="profile__job" value=""
+                    placeholder="Введите информацию о себе" required>
+                <input type="submit" class="popup__submit" id="popup__submit" value="Сохранить">
+            </form>
+            <button type="button" class="popup__close" id="popup__close" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <div id="popup__photo" class="popup">
+        <div class="popup__container">
+            <h2 id="photo__title" class="popup__title">Новое место</h2>
+            <form name="photo-add" id="photo-form" class="popup__form" action="#">
+                <input name="photo-name" type="text" class="popup__input" id="photo-name" value=""
+                    placeholder="Название" required>
+                <input name="photo-link" type="text" class="popup__input" id="photo-link" value=""
+                    placeholder="Ссылка на картинку" required>
+                <input type="submit" class="popup__submit" id="photo__submit" value="Сохранить">
+            </form>
+            <button type="button" class="popup__close" id="photo__close" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <template id="place">
+        <li class="photo-grid__item">
+            <button type="button" class="photo-grid__thrash" aria-label="button-thrash">Удалить</button>
+            <img class="photo-grid__pic" src="#" alt="">
+            <div class="photo-grid__description">
+                <h2 class="photo-grid__name"></h2>
+                <button type="button" class="photo-grid__like" aria-label="button-like"></button>
+            </div>
+        </li>
+    </template>
+
+    <script src="js/cards.js"></script>
+    <script src="js/index.js"></script>
 </body>
+
 </html>

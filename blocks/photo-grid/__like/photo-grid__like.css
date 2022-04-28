@@ -1,16 +1,17 @@
-.photo-grid__like{
-  
+.photo-grid__like {
     background: url('../../../images/like.svg') center no-repeat;
     transition: opacity 0.3s ease-in-out;
   margin-right: 21px;
   width: 26px;
   height: 19px;
-  
-  font-size: 0; /* Скрываем текст */
   border: none;
   cursor: pointer;
 }
 
-.photo-grid__like:hover{
-    opacity: 0.4;
+.element__like:hover {
+    opacity: .5;
+}
+
+.element__like:active {
+    background-image: url('../../../images/like-active.jpg');
 }

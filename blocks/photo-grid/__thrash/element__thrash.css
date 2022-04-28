@@ -1,0 +1,18 @@
+.photo-grid__thrash {
+  transition: opacity 0.3s ease-in-out;
+  width: 18px;
+  height: 20px;
+
+  background: url('../../../images/thrash-cap.svg') top center / 18px 4.42px no-repeat, url('../../../images/thrash.svg') bottom center / 15.44px 13.3px no-repeat;
+  font-size: 0; 
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+.element__thrash:hover {
+  opacity: .6;
+}
+   
