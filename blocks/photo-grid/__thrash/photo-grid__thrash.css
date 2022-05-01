@@ -4,7 +4,7 @@
   height: 20px;
 
   background: url('../../../images/thrash-cap.svg') top center / 18px 4.42px no-repeat, url('../../../images/thrash.svg') bottom center / 15.44px 13.3px no-repeat;
-  font-size: 0; 
+  font-size: 0;
   border: none;
   cursor: pointer;
   position: absolute;
