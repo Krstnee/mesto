@@ -12,3 +12,7 @@
     transition: all 1s;
     visibility: hidden;
 }
+
+.popup_open_pic {
+    background-color: rgba(0, 0, 0, 0.9);
+}

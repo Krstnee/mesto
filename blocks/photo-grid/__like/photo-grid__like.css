@@ -8,10 +8,10 @@
   cursor: pointer;
 }
 
-.element__like:hover {
-    opacity: .5;
+.photo-grid__like:hover {
+    opacity: 0.4;
 }
 
-.element__like:active {
+.photo-grid__like:active {
     background-image: url('../../../images/like-active.jpg');
 }
