@@ -7,7 +7,7 @@
     background-color: black;
     color: white;
     text-align: center;
-    margin: 48px auto 37px auto;
+    margin: 16px auto 37px auto;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -23,7 +23,7 @@
     .popup__submit {
         width: 238px;
         height: 46px;
-        margin: 45px auto 25px auto;
+        margin: 15px auto 25px auto;
         font-size: 14px;
         line-height: 1.21px;
     }

@@ -3,8 +3,8 @@ const cardList = document.querySelector('.photo-grid');
 const profileEditButton = document.querySelector('.profile__edit');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
-const popupInfName = document.querySelector('#profile__name');
-const popupInfJob = document.querySelector('#profile__job');
+const popupInfName = document.querySelector('#profile-name');
+const popupInfJob = document.querySelector('#profile-job');
 const popupOpenProfile = document.querySelector('#popup__profile');
 const popupTitle = document.querySelector('.popup__title');
 const popupPhotoAdd = document.querySelector('#popup__photo');
@@ -32,6 +32,7 @@ const generateCard = (cardInf) => {
   const newCard = cardElement.cloneNode(true);
   const titleCard = newCard.querySelector('.photo-grid__name');
   titleCard.textContent = cardInf.name;
+
   const imgLink = newCard.querySelector('.photo-grid__pic');
   imgLink.src = cardInf.link;
   imgLink.addEventListener('click', function () {
@@ -41,6 +42,7 @@ const generateCard = (cardInf) => {
     popupImageCap.textContent = titleCard.textContent;
   });
   imgLink.setAttribute('alt', cardInf.name);
+
   const delCard = newCard.querySelector('.photo-grid__thrash');
   delCard.addEventListener('click', handleDeleteCard);
   const likeCard = newCard.querySelector('.photo-grid__like');
@@ -74,6 +76,14 @@ const AddPhotoCard = (evt) => {
   };
 const popupOpen = (popup) => {
   popup.classList.add('popup_opened');
+
+  const popupCloseKey = (evt) => {
+    if (evt.key == 'Escape'){
+      popupClose(popup);
+      document.removeEventListener('keydown', popupCloseKey)
+    }
+  };
+  document.addEventListener('keydown', popupCloseKey)
 };
 
 
@@ -101,6 +111,18 @@ popupCloseBut.addEventListener('click', function() {
 });
 formInfPhoto.addEventListener('submit', AddPhotoCard);
 formInfProfile.addEventListener('submit', saveProfile);
+
+popupOpenProfile.addEventListener('click', function (evt) {
+  popupClose(evt.target);
+});
+
+popupPhotoAdd.addEventListener('click', function (evt) {
+  popupClose(evt.target);
+});
+
+popupImage.addEventListener('click', function (evt) {
+  popupClose(evt.target);
+});
 
 
 
