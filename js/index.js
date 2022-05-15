@@ -5,7 +5,7 @@ const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 const popupInfName = document.querySelector('#profile-name');
 const popupInfJob = document.querySelector('#profile-job');
-const popupOpenProfile = document.querySelector('#popup__profile');
+const openPopupProfile = document.querySelector('#popup__profile');
 const popupTitle = document.querySelector('.popup__title');
 const popupPhotoAdd = document.querySelector('#popup__photo');
 const profileAddButton = document.querySelector('.profile__add');
@@ -21,6 +21,9 @@ const popupPic = document.querySelector('.popup__picture');
 const popupImageCap = document.querySelector('.popup__caption');
 const popupImageClose = document.querySelector('.popup__image-close');
 
+const popups = document.querySelectorAll('.popup');
+const cardForm = document.forms.photoAdd;
+let closeByEscape;
 
 const handleDeleteCard = (evt) => {
   evt.target.closest('.photo-grid__item').remove();
@@ -36,10 +39,10 @@ const generateCard = (cardInf) => {
   const imgLink = newCard.querySelector('.photo-grid__pic');
   imgLink.src = cardInf.link;
   imgLink.addEventListener('click', function () {
-    popupOpen(popupImage);
     popupPic.src = imgLink.src;
     popupPic.setAttribute('alt', titleCard.textContent);
     popupImageCap.textContent = titleCard.textContent;
+    openPopup(popupImage);
   });
   imgLink.setAttribute('alt', cardInf.name);
 
@@ -62,7 +65,11 @@ const saveProfile = (evt) => {
       evt.preventDefault();
       profileName.textContent = popupInfName.value;
       profileJob.textContent = popupInfJob.value;
-      popupClose(popupOpenProfile);
+      closePopup(openPopupProfile);
+      const btnProfileSubmit = document.querySelector('#popup__submit');
+      btnProfileSubmit.classList.add('popup__submit_inactive');
+  btnProfileSubmit.setAttribute('disabled', true);
+  cardForm.reset();
 };
 const AddPhotoCard = (evt) => {
       evt.preventDefault();
@@ -70,63 +77,92 @@ const AddPhotoCard = (evt) => {
         name: popupPhotoAddName.value, 
         link: popupPhotoAddLink.value 
       } );
-      popupClose(popupPhotoAdd);
-      popupPhotoAddName.value = '';
-      popupPhotoAddLink.value = '';
-  };
-const popupOpen = (popup) => {
+      closePopup(popupPhotoAdd);
+      const btnPopupSubmit = document.querySelector('#photo__submit');
+  btnPopupSubmit.classList.add('popup__submit_inactive');
+  btnPopupSubmit.setAttribute('disabled', true);
+  cardForm.reset();
+};
+const openPopup= (popup) => {
   popup.classList.add('popup_opened');
-
-  const popupCloseKey = (evt) => {
-    if (evt.key == 'Escape'){
-      popupClose(popup);
-      document.removeEventListener('keydown', popupCloseKey)
+  closeByEscape = (evt) => {
+    if (evt.key == 'Escape') {
+      closePopup(popup);
     }
   };
-  document.addEventListener('keydown', popupCloseKey)
-};
+  document.addEventListener('keydown', closeByEscape);
+}
 
 
 profileAddButton.addEventListener('click', function(){
-  popupOpen(popupPhotoAdd);
+  openPopup(popupPhotoAdd);
 });
+
+
 profileEditButton.addEventListener('click', function(){
   popupInfName.value = profileName.textContent;
   popupInfJob.value = profileJob.textContent;
-  popupOpen(popupOpenProfile);
+  openPopup(openPopupProfile);
 });
 
-const popupClose = (popup) => {
+const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
 };
 
-popupAddPhotoCloseButton.addEventListener('click', function() {
-  popupClose(popupPhotoAdd);
-} );
-popupImageClose.addEventListener('click', function() {
-  popupClose(popupImage);
-});
-popupCloseBut.addEventListener('click', function() {
-  popupClose(popupOpenProfile);
-});
-formInfPhoto.addEventListener('submit', AddPhotoCard);
-formInfProfile.addEventListener('submit', saveProfile);
-
-popupOpenProfile.addEventListener('click', function (evt) {
-  popupClose(evt.target);
-});
-
-popupPhotoAdd.addEventListener('click', function (evt) {
-  popupClose(evt.target);
-});
-
-popupImage.addEventListener('click', function (evt) {
-  popupClose(evt.target);
-});
 
 
+formInfPhoto.addEventListener('submit', AddPhotoCard)
+formInfProfile.addEventListener('submit',saveProfile)
 
 
+popupAddPhotoCloseButton.addEventListener('click', function() { 
+
+  closePopup(popupPhotoAdd); 
+
+} ); 
+
+popupImageClose.addEventListener('click', function() { 
+
+  closePopup(popupImage); 
+
+}); 
+
+popupCloseBut.addEventListener('click', function() { 
+
+  closePopup(openPopupProfile); 
+
+}); 
+
+formInfPhoto.addEventListener('submit', AddPhotoCard); 
+
+formInfProfile.addEventListener('submit', saveProfile); 
+
+ 
+
+openPopupProfile.addEventListener('click', function (evt) { 
+
+  closePopup(evt.target); 
+
+}); 
+
+ 
+
+popupPhotoAdd.addEventListener('click', function (evt) { 
+
+  closePopup(evt.target); 
+
+}); 
+
+ 
+
+popupImage.addEventListener('click', function (evt) { 
+
+  closePopup(evt.target); 
+
+}); 
+
+ 
 
 
 
