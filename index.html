@@ -32,7 +32,7 @@
         <div class="popup__figure">
             <img class="popup__picture" src="#" alt="">
             <h3 class="popup__caption"></h3>
-            <button type="button" class="popup__image-close" aria-label="Close"></button>
+            <button type="button" class="popup__close" id="popup__image-close" aria-label="Close"></button>
         </div>
     </div>
 
@@ -43,7 +43,7 @@
     <div id="popup__profile" class="popup">
         <div class="popup__container">
             <h2 class="popup__title" id="profile__title">Редактирование профиля</h2>
-            <form name="profile-edit" id="profile-form" class="popup__form" action="#" novalidate>
+            <form name="profileEdit" id="profile-form" class="popup__form" action="#" novalidate>
                 <input name="profile-name" type="text" class="popup__input" id="profile-name" value=""
                     placeholder="Введите имя" minlength="2" maxlength="40" required>
                 <span class="popup__error" id="profile-name_error_text"></span>
@@ -84,8 +84,10 @@
     </template>
 
     <script src="js/cards.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/validate.js"></script>
+    <script type='module' src="js/index.js"></script>
+    <script type='module' src="./js/Card.js"></script>
+    <script type='module' src="js/FormValidator.js"></script>
+    
 </body>
 
 </html>
