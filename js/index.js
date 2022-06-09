@@ -35,6 +35,13 @@ const valSettings = {
   errorClass: 'popup__input_error-text-active',
 };
 
+const addForm = document.forms.photoAdd;
+const photoFormValidator = new FormValidator(valSettings, addForm)
+photoFormValidator.enableValidation()
+const editForm = document.forms.profileEdit;
+const profileFormValidator = new FormValidator(valSettings, editForm);
+profileFormValidator.enableValidation();
+
 const saveProfile = (evt) => {
       evt.preventDefault();
       profileName.textContent = popupInfName.value;
@@ -42,7 +49,7 @@ const saveProfile = (evt) => {
       closePopup(openPopupProfile);
       
 };
-const AddPhotoCard = (evt) => {
+const addPhotoCard = (evt) => {
       evt.preventDefault();
       const newCardData =  {
         name: popupPhotoAddName.value, 
@@ -71,32 +78,26 @@ profileEditButton.addEventListener('click', function(){
   popupInfName.value = profileName.textContent;
   popupInfJob.value = profileJob.textContent;
   openPopup(openPopupProfile);
-  const curentForm = document.forms.profileEdit;
-  const profileFormValidator = new FormValidator(valSettings, curentForm);
-  profileFormValidator.enableValidation();
+  
   
 });
 
 profileAddButton.addEventListener('click', function(){
   openPopup(popupPhotoAdd);
-  const curentForm = document.forms.photoAdd;
-  const photoFormValidator = new FormValidator(valSettings, curentForm);    
-  photoFormValidator.enableValidation()
+ 
   
 });
 
 
-formInfPhoto.addEventListener('submit', AddPhotoCard)
+formInfPhoto.addEventListener('submit', addPhotoCard)
 formInfProfile.addEventListener('submit',saveProfile)
 
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
+    if ((evt.target.classList.contains('popup_opened')) ||  (evt.target.classList.contains('popup__close'))) {
       closePopup(popup);
     }
-    if (evt.target.classList.contains('popup__close')) {
-      closePopup(popup);
-    }
+   
   });
 });
 
