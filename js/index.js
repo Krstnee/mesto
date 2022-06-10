@@ -77,12 +77,14 @@ const closePopup = (popup) => {
 profileEditButton.addEventListener('click', function(){
   popupInfName.value = profileName.textContent;
   popupInfJob.value = profileJob.textContent;
+  profileFormValidator.disableValidation()
   openPopup(openPopupProfile);
   
   
 });
 
 profileAddButton.addEventListener('click', function(){
+  photoFormValidator.disableValidation()
   openPopup(popupPhotoAdd);
  
   
